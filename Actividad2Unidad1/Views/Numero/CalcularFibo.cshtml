@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Confirmar si un número es Fibonacci";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-success text-white text-center">
+                    <h4>Confirmar si un número<br />pertenece a Fibonacci</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Verificar" method="post">
+                        <div class="mb-3">
+                            <label for="numero" class="form-label">Digita un número para comprobar</label>
+                            <input type="text" class="form-control" id="numero" name="numero" required />
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Comprobar</button>
+                        </div>
+                    </form>
+
+                    @if (ViewBag.Mensaje != null)
+                    {
+                        <div class="alert alert-info mt-4 text-center fw-bold">
+                            @ViewBag.Mensaje
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
