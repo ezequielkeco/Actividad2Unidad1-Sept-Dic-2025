@@ -1,0 +1,71 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Generador de facturas";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-3">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4>Generador de Factura</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Calcular" method="post">
+                        <div class="mb-3">
+                            <label for="monto" class="form-label fw-bold">Monto en pesos RD$</label>
+                            <input type="text" class="form-control" id="monto" name="monto" step="0.01" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Seleccione la opción deseada</label>
+                            <select class="form-select" name="opcion" required>
+                                <option value="">* Seleccionar opción *</option>
+                                <option value="ITBIS">Aplicar ITBIS (18%)</option>
+                                <option value="DESCUENTO">Aplicar Descuento (15%)</option>
+                            </select>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Calcular</button>
+                        </div>
+                    </form>
+
+                    @if (ViewBag.Subtotal != null)
+                    {
+                        <hr />
+                        <div class="mt-4">
+                            <h5 class="text-center fw-bold">Detalle de la Factura</h5>
+                            <table class="table table-bordered mt-3 text-center">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Concepto</th>
+                                        <th>Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Subtotal</td>
+                                        <td>@ViewBag.Subtotal</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ITBIS (18%)</td>
+                                        <td>@ViewBag.Impuesto</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Descuento (15%)</td>
+                                        <td>@ViewBag.Descuento</td>
+                                    </tr>
+                                    <tr class="table-success fw-bold">
+                                        <td>Total</td>
+                                        <td>@ViewBag.Total</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
