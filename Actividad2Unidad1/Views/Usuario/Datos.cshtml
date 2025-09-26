@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Datos del usuario";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4>Calcular edad y año de nacimiento</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-action="Datos">
+                        <div class="form-group mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento:</label>
+                            <input type="text" class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="Ej: 30/05/2000" required>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success w-100">Calcular</button>
+                        </div>
+                    </form>
+
+                    @if (ViewBag.Nombre != null)
+                    {
+                        <div class="alert alert-info text-center mt-4">
+                            <h5>
+                                Hola, <strong>@ViewBag.Nombre</strong>.
+                                Tienes <strong>@ViewBag.Edad</strong> años y tu año de nacimiento es <strong>@ViewBag.AnioNacimiento</strong>.
+                            </h5>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
