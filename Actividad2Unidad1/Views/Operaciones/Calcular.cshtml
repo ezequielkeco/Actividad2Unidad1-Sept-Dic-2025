@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Calcular dos valores";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-dark text-white text-center">
+                    <h4>Calculadora para dos números</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-action="Calcular">
+                        <div class="form-group mb-3">
+                            <label for="valor1" class="form-label">Número 1:</label>
+                            <input type="text" step="any" class="form-control" id="valor1" name="valor1" placeholder="Ingrese el primer valor" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="valor2" class="form-label">Número 2:</label>
+                            <input type="text" step="any" class="form-control" id="valor2" name="valor2" placeholder="Ingrese el segundo valor" required>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="operacion" class="form-label">Seleccione la operación deseada:</label>
+                            <select class="form-select" id="operacion" name="operacion" required>
+                                <option value="Suma">Suma</option>
+                                <option value="Resta">Resta</option>
+                                <option value="Multiplicación">Multiplicación</option>
+                                <option value="División">División</option>
+                                <option value="Potenciación">Potenciación</option>
+                            </select>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success w-100">Calcular</button>
+                        </div>
+                    </form>
+
+                    @if (ViewBag.Resultado != null)
+                    {
+                        <div class="alert alert-info text-center mt-4">
+                            <h5>
+                                Operación: <strong>@ViewBag.Operacion</strong> <br />
+                                Valores: <strong>@ViewBag.Valor1</strong> y <strong>@ViewBag.Valor2</strong> <br />
+                                Resultado: <strong>@ViewBag.Resultado</strong>
+                            </h5>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
